@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Template</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Keep only one Chart.js reference -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script type="module" src="/static/js/main.js"></script>
+    <script type="module" src="/static/js/calculations.js"></script>
+
+    <script>
+        console.log("Document loaded");
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM Content Loaded");
+            console.log("Chart.js available:", typeof Chart !== 'undefined');
+            console.log("ChartManager available:", typeof ChartManager !== 'undefined');
+        });
+    </script>
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Astra&nbsp; Celestic</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><i class="bi bi-house"></i> Dashboard</li>
+                <li><i class="bi bi-person"></i> Mi Cuenta</li>
+                <li><i class="bi bi-table"></i> Calendario</li>
+                <li><i class="bi bi-file-text"></i> Ventas</li>
+                <li><i class="bi bi-square"></i> Proveedores</li>
+                <li><i class="bi bi-map"></i> Mapas</li>
+                <li><i class="bi bi-bell"></i> Avisos</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="search-bar">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Buscar...">
+                </div>
+                <div class="nav-right">
+                    <i class="bi bi-envelope"></i>
+                    <i class="bi bi-bell"></i>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <h3>PV1 Total Ventas en Semana</h3>
+                            <p class="stat-number">$ 0,000.00</p>
+                            <p class="stat-change">Increased by 60%</p>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i class="bi bi-cart"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <h3>PV1 Clientes por Semana</h3>
+                            <p class="stat-number">0</p>
+                            <p class="stat-change">Decreased by 10%</p>
+                        </div>
+                        <div class="stat-icon green">
+                            <i class="bi bi-people"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <h3>Clientes Internet por Semana</h3>
+                            <p class="stat-number">358</p>
+                            <p class="stat-change">Increased by 5%</p>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i class="bi bi-basket"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>PV1 Ventas en tiempo real Semana 10</h3>
+                        <div class="chart-placeholder" style="height: 400px;">
+                            <canvas id="dineroChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Todos PV Ventas Semanal</h3>
+                        <div class="chart-container">
+                            <canvas id="salesBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects Table -->
+                <div class="table-card">
+                    <h3>Projects Status</h3>
+                    <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Servicios</th>
+                                <th>Cantidades</th>
+                                <th>Status</th>
+                                <th>Progreso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Paquetería</td>
+                                <td>$14,500</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo CFE</td>
+                                <td>358 KW</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consumo Agua</td>
+                                <td>10 m3</td>
+                                <td><span class="status ongoing">In Progress</span></td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 45%"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+<script src="/static/js/charts.js"></script>
+
+</body>
+</html>

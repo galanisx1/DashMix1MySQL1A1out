@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de kWh, m³ de Agua y Ventas</title>
+    <script src="/static/js/chart.umd.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            max-width: 80%;
+            margin: 20px auto;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Consumo de kWh, m³ de Agua y Ventas</h1>
+    <canvas id="kwhChart"></canvas>
+    <canvas id="waterChart"></canvas>
+    <canvas id="salesChart"></canvas>
+    <canvas id="salesBarChart"></canvas>
+    <canvas id="dineroChart"></canvas>
+
+    <h2>Datos de kWh</h2>
+    <table id="kwhDataTable">
+        <thead>
+            <tr>
+                <th>Fecha y Hora</th>
+                <th>Valor (kWh)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los datos se actualizarán aquí -->
+        </tbody>
+    </table>
+    
+    <script src="/static/js/charts.js"></script>
+
+    <script>
+        // Función para obtener los datos de kWh y mostrarlos en la tabla
+        function updateKwhData() {
+            fetch('/get_kwh_data')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#kwhDataTable tbody');
+                    tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+                    // Iterar sobre los datos y agregar cada fila a la tabla
+                    data.data.forEach(item => {
+                        const row = document.createElement('tr');
+                        const timestampCell = document.createElement('td');
+                        timestampCell.textContent = item.timestamp;
+                        const valueCell = document.createElement('td');
+                        valueCell.textContent = item.value;
+                        row.appendChild(timestampCell);
+                        row.appendChild(valueCell);
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error al obtener los datos de kWh:', error));
+        }
+
+        // Actualizar los datos cada 5 segundos
+        setInterval(updateKwhData, 5000);
+
+        // Llamar a la función para cargar los datos al iniciar
+        updateKwhData();
+    </script>
+</body>
+</html>

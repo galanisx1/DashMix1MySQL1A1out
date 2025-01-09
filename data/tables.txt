@@ -1,0 +1,3 @@
+{'kwh': 120, 'water': 30, 'sales': 1000}
+{'kwh': 150, 'water': 25, 'sales': 1100}
+{'kwh': 180, 'water': 40, 'sales': 1200}
