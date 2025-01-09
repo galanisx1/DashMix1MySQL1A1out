@@ -17,13 +17,16 @@ export function initdineroChart() {
     }
 
     function updateChart(chart, newData) {
-        if (chart.data.labels.length > 20) {
+        // Add new data point
+        chart.data.labels.push(getFormattedDateTime());
+        chart.data.datasets[0].data.push(parseFloat(newData));
+
+        // Ensure the chart only keeps the last 15 events
+        while (chart.data.labels.length > 15) {
             chart.data.labels.shift();
             chart.data.datasets[0].data.shift();
         }
-        
-        chart.data.labels.push(getFormattedDateTime());
-        chart.data.datasets[0].data.push(parseFloat(newData));
+
         chart.update();
     }
 
