@@ -273,19 +273,62 @@ body {
 
     .main-content {
         margin-left: 0;
-        padding-top: 70px;
+        padding: 70px 10px 20px 10px; /* Reduced padding */
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 15px; /* Reduced gap */
+    }
+
+    .stat-card {
+        padding: 15px; /* Reduced padding */
+    }
+
+    .stat-number {
+        font-size: 20px; /* Smaller font */
+    }
+
+    .stat-icon {
+        width: 50px; /* Smaller icon */
+        height: 50px;
+        font-size: 20px;
     }
 
     .charts-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .chart-card {
+        padding: 15px;
+    }
+
+    .chart-placeholder {
+        height: 200px; /* Shorter height for mobile */
     }
 
     .projects-table {
         display: block;
         overflow-x: auto;
+        font-size: 14px; /* Smaller font */
+    }
+
+    .table-card {
+        padding: 15px;
+    }
+
+    .top-nav {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        max-width: 150px; /* Limit search bar width */
+    }
+
+    .nav-right i {
+        margin-left: 15px;
+        font-size: 18px;
     }
 }
