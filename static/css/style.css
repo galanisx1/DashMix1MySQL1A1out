@@ -257,6 +257,7 @@ body {
 
 
 /* Mobile Responsive Styles */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -273,62 +274,67 @@ body {
 
     .main-content {
         margin-left: 0;
-        padding: 70px 10px 20px 10px; /* Reduced padding */
+        padding: 10px;
+        width: 100%;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
-        gap: 15px; /* Reduced gap */
+        gap: 10px;
     }
 
     .stat-card {
-        padding: 15px; /* Reduced padding */
-    }
-
-    .stat-number {
-        font-size: 20px; /* Smaller font */
-    }
-
-    .stat-icon {
-        width: 50px; /* Smaller icon */
-        height: 50px;
-        font-size: 20px;
+        padding: 15px;
+        width: 100%;
+        min-width: 0;
     }
 
     .charts-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 10px;
     }
 
     .chart-card {
         padding: 15px;
+        width: 100%;
+        min-width: 0;
+        overflow-x: auto;
     }
 
     .chart-placeholder {
-        height: 200px; /* Shorter height for mobile */
+        height: 200px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Adjust table for mobile */
+    .table-card {
+        padding: 10px;
+        width: 100%;
+        overflow-x: auto;
     }
 
     .projects-table {
-        display: block;
-        overflow-x: auto;
-        font-size: 14px; /* Smaller font */
+        font-size: 14px;
+        width: 100%;
+        min-width: 500px; /* Ensure minimum width for readability */
     }
 
-    .table-card {
-        padding: 15px;
-    }
-
+    /* Adjust search and navigation */
     .top-nav {
-        padding: 15px;
-        margin-bottom: 20px;
+        flex-wrap: wrap;
+        padding: 10px;
     }
 
     .search-bar {
-        max-width: 150px; /* Limit search bar width */
+        width: 100%;
+        max-width: none;
+        margin-bottom: 10px;
     }
 
-    .nav-right i {
-        margin-left: 15px;
-        font-size: 18px;
+    .nav-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
     }
 }
