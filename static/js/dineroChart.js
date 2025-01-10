@@ -1,4 +1,3 @@
-// dineroChart.js
 export function initdineroChart() {
     const ctx = document.getElementById('dineroChart').getContext('2d');
 
@@ -17,11 +16,9 @@ export function initdineroChart() {
     }
 
     function updateChart(chart, newData) {
-        // Add new data point
         chart.data.labels.push(getFormattedDateTime());
         chart.data.datasets[0].data.push(parseFloat(newData));
 
-        // Ensure the chart only keeps the last 15 events
         while (chart.data.labels.length > 15) {
             chart.data.labels.shift();
             chart.data.datasets[0].data.shift();
@@ -40,7 +37,6 @@ export function initdineroChart() {
                 body: JSON.stringify({ dinero: value }),
             });
             const result = await response.json();
-            // Actualizar el total inmediatamente después de guardar
             if (result.total_ventas) {
                 updateTotalDisplay(result.total_ventas);
             }
@@ -50,7 +46,6 @@ export function initdineroChart() {
         }
     }
 
-    // Nueva función para actualizar el display del total
     function updateTotalDisplay(total) {
         const statNumber = document.querySelector('.stat-card:first-child .stat-number');
         if (statNumber) {
@@ -64,8 +59,9 @@ export function initdineroChart() {
     fetch('/get_dinero_data')
         .then(response => response.json())
         .then(data => {
-            const labels = data.data.map(item => item.timestamp);
-            const values = data.data.map(item => item.value);
+            const limitedData = data.data.slice(-15); // Use only the last 15 entries
+            const labels = limitedData.map(item => item.timestamp);
+            const values = limitedData.map(item => item.value);
 
             chartInstance = new Chart(ctx, {
                 type: 'line',
@@ -74,7 +70,6 @@ export function initdineroChart() {
                     datasets: [{
                         label: 'Ventas ($)',
                         data: values,
-                        //borderColor: 'rgba(75, 192, 192, 1)',
                         borderColor: 'rgb(113, 70, 243)',
                         borderWidth: 2,
                         fill: false,
